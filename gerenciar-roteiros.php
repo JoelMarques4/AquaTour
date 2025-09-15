@@ -1,3 +1,22 @@
+<?php
+session_start();
+require_once 'login/config.php'; // Incluir o arquivo de configuração do banco de dados
+
+if (!isset($_SESSION['logged']) || !$_SESSION['logged']) {
+    header('Location: loginpage.php');
+    exit();
+}
+
+$roteiros = [];
+try {
+    $stmt = $pdo->query('SELECT * FROM roteiros ORDER BY created_at DESC');
+    $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // Em um ambiente de produção, você registraria o erro em vez de exibi-lo diretamente
+    echo '<div class="alert alert-danger">Erro ao carregar roteiros: ' . $e->getMessage() . '</div>';
+}
+?>
+
 <!doctype html>
 <html lang="pt-BR" class="h-100">
 
@@ -13,14 +32,6 @@
 </head>
 
 <body class="d-flex flex-column h-100 admin-bg">
-
-    <?php
-        session_start();
-        if (!isset($_SESSION['logged']) || !$_SESSION['logged']) {
-            header('Location: loginpage.php');
-            exit();
-        }
-    ?>
 
     <nav class="navbar navbar-expand-lg navbarUI px-5 py-2">
         <div class="container-fluid">
@@ -62,6 +73,12 @@
             <button class="btn btn-primary"><i class="fas fa-plus"></i> Adicionar Novo Roteiro</button>
         </div>
 
+        <?php if (isset($_GET['message']) && isset($_GET['type'])): ?>
+            <div class="alert alert-<?php echo htmlspecialchars($_GET['type']); ?>" role="alert">
+                <?php echo htmlspecialchars($_GET['message']); ?>
+            </div>
+        <?php endif; ?>
+
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="table-responsive">
@@ -69,48 +86,33 @@
                         <thead class="table-light">
                             <tr>
                                 <th scope="col">Nome do Roteiro</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Preço</th>
                                 <th scope="col" class="text-end">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mergulho em Recifes de Coral</td>
-                                <td><span class="badge bg-success">Ativo</span></td>
-                                <td>R$ 180,00</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Observação de Tartarugas Marinhas</td>
-                                <td><span class="badge bg-success">Ativo</span></td>
-                                <td>R$ 120,00</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Observação de Orcas</td>
-                                <td><span class="badge bg-warning text-dark">Sazonal</span></td>
-                                <td>R$ 250,00</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>Limpeza de Praia Voluntária</td>
-                                <td><span class="badge bg-secondary">Inativo</span></td>
-                                <td>R$ 0,00</td>
-                                <td class="text-end">
-                                    <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
-                                </td>
-                            </tr>
+                            <?php if (empty($roteiros)): ?>
+                                <tr>
+                                    <td colspan="3" class="text-center">Nenhum roteiro cadastrado ainda.</td>
+                                </tr>
+                            <?php else: ?>
+                                <?php foreach ($roteiros as $roteiro): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($roteiro['titulo']); ?></td>
+                                        <td>R$ <?php echo number_format($roteiro['preco'], 2, ',', '.'); ?></td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar" 
+                                                    data-id="<?php echo $roteiro['id']; ?>">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"
+                                                    data-id="<?php echo $roteiro['id']; ?>">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
