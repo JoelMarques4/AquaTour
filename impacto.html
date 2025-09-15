@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nosso Impacto - AquaTour</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script defer src="script_roteiros.js"></script>
+    <script defer src="script.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="impacto.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <nav class="navbar navbar-expand-lg navbarUI px-5 py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-linkUI" href="index.php">
+                <img src="logo-white.svg" width="100" height="100" class="d-inline-block">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="index.php">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="index.php#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="roteiros.html">Roteiros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI active" href="impacto.html">Impacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="index.php#contact">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
+                    <button class="btn btn-primaryNav" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="impacto-hero">
+        <div class="hero-overlay"></div>
+        <div class="container text-center hero-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="hero-title">Nosso Impacto</h1>
+                    <p class="hero-subtitle">Resultados reais que protegem os oceanos e inspiram um futuro mais
+                        sustentável</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explicação dos Impactos -->
+    <section class="py-5">
+        <div class="container mx-auto">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                <!-- Tartarugas marinhas protegidas -->
+                <div class="impacto-detalhado mb-5" id="tartarugas">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="impacto-content">
+                                <h2 class="impacto-title">Tartarugas marinhas protegidas</h2>
+                                <p class="impacto-description">
+                                    Trabalhamos na proteção de ninhos, no monitoramento das praias e no resgate de
+                                    tartarugas feridas por poluição ou pesca. Cada temporada representa uma vitória: mais
+                                    filhotes alcançando o mar e mais animais adultos retornando com segurança ao seu
+                                    habitat.
+                                </p>
+
+                                <div class="impacto-highlights">
+                                    <h5>Nossas atividades:</h5>
+                                    <ul>
+                                        <li><i class="fas fa-house-medical"></i> +350 tartarugas resgatadas e reabilitadas
+                                        </li>
+                                        <li><i class="fas fa-egg"></i> +1.200 ninhos monitorados e protegidos</li>
+                                        <li><i class="fas fa-water"></i> +85.000 filhotes conduzidos ao oceano</li>
+                                        <li><i class="fas fa-umbrella-beach"></i> +25 km de praias monitoradas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <div class="impacto-image-container text-center">
+                                <img src="turtle2.jpg" alt="Resgate de tartarugas" class="img-fluid rounded-4 mx-auto d-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recifes preservados -->
+                <div class="impacto-detalhado mb-5" id="corais">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="impacto-content">
+                                <h2 class="impacto-title">Recifes preservados</h2>
+                                <p class="impacto-description">
+                                    Nossos programas de conservação marinha restauram ecossistemas frágeis, como recifes de
+                                    corais, que são berçários naturais para inúmeras espécies. Investimos em viveiros de
+                                    corais, monitoramento científico e ações de turismo responsável para garantir que esses
+                                    ecossistemas continuem vivos para as próximas gerações.
+                                </p>
+
+                                <div class="impacto-highlights">
+                                    <h5>Nossas atividades:</h5>
+                                    <ul>
+                                        <li><i class="fas fa-seedling"></i> +4.000 fragmentos de corais plantados</li>
+                                        <li><i class="fas fa-heart"></i> +75% taxa média de sobrevivência dos corais após 1
+                                            ano</li>
+                                        <li><i class="fas fa-water"></i> +50 ha de áreas marinhas sob manejo sustentável
+                                        </li>
+                                        <li><i class="fas fa-book"></i> +120 espécies registradas em monitoramentos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-2 d-flex justify-content-center">
+                            <div class="impacto-image-container text-center">
+                                <img src="coral.jpg" alt="Preservação dos recifes de coral" class="img-fluid rounded-4 mx-auto d-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turistas conscientes -->
+                <div class="impacto-detalhado mb-5" id="turistas">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="impacto-content">
+                                <h2 class="impacto-title">Turistas conscientes</h2>
+                                <p class="impacto-description">
+                                    Cada visitante recebe orientação prática sobre como interagir de forma respeitosa com o
+                                    ambiente marinho. Ao final da experiência, eles levam não apenas boas memórias, mas
+                                    também novos hábitos sustentáveis que se refletem no dia a dia. Transformamos turistas
+                                    em verdadeiros embaixadores do oceano.
+                                </p>
+
+                                <div class="impacto-highlights">
+                                    <h5>Nossas atividades:</h5>
+                                    <ul>
+                                        <li><i class="fas fa-user"></i> +5.000 turistas capacitados como Turistas
+                                            Conscientes</li>
+                                        <li><i class="fas fa-recycle"></i> +92% de adesão às boas práticas durante os
+                                            passeios</li>
+                                        <li><i class="fas fa-chevron-up"></i> +87% relatam mudança de hábitos após a viagem
+                                        </li>
+                                        <li><i class="fas fa-user-group"></i> +50 comunidades locais envolvidas em educação
+                                            ambiental</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <div class="impacto-image-container text-center">
+                                <img src="turistas.jpg" alt="Concientização de turistas" class="img-fluid rounded-4 mx-auto d-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lixo retirado do mar -->
+                <div class="impacto-detalhado mb-5" id="lixo">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="impacto-content">
+                                <h2 class="impacto-title">Lixo retirado do mar</h2>
+                                <p class="impacto-description">
+                                    Realizamos mutirões de limpeza em praias e mergulhos subaquáticos, recolhendo resíduos
+                                    que ameaçam a vida marinha. O material é encaminhado para reciclagem ou reutilização,
+                                    gerando também oportunidades de renda para cooperativas locais.
+                                </p>
+
+                                <div class="impacto-highlights">
+                                    <h5>Nossas atividades:</h5>
+                                    <ul>
+                                        <li><i class="fas fa-trash"></i> +18 toneladas de resíduos removidos do mar e praias
+                                        </li>
+                                        <li><i class="fas fa-recycle"></i> +65% do lixo coletado destinado à reciclagem e upcycling</li>
+                                        <li><i class="fas fa-person-hiking"></i> +200 mutirões de limpeza realizados</li>
+                                        <li><i class="fas fa-user-group"></i> +800 voluntários engajados</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <div class="impacto-image-container text-center">
+                                <img src="beach.jpg" alt="Remoção de Lixo" class="img-fluid rounded-4 mx-auto d-block">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer mt-auto py-3 text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h5 class="footerTitle">AquaTour</h5>
+                    <p class="footerText">Conectando pessoas aos oceanos de forma sustentável e responsável.</p>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="footerTitle">Roteiros</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="footer-link" href="roteiros.html#dive">Mergulho</a></li>
+                        <li><a class="footer-link" href="roteiros.html#turtles">Tartarugas</a></li>
+                        <li><a class="footer-link" href="roteiros.html#whales">Baleias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="footerTitle">Sobre</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="footer-link" href="index.php#about">Nossa Missão</a></li>
+                        <li><a class="footer-link" href="index.php#impact">Impacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h6 class="footerTitle">Suporte</h6>
+                    <ul class="list-unstyled">
+                        <li><a class="footer-link" href="index.php#contact">Contato</a></li>
+                        <li><a class="footer-link" href="index.php#report">Denúncias</a></li>
+                        <li><a class="footer-link" href="index.php#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="footerText mb-0">&copy; 2025 AquaTour. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

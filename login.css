@@ -1,0 +1,60 @@
+/* Fundo com gradiente AquaTour */
+.login-section {
+  background: linear-gradient(135deg, #041e40 0%, #1e3c72 50%, #4fc3f7 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Card central */
+.login-card {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.login-card h2 {
+  color: #1e3c72;
+  font-weight: 700;
+}
+
+/* Links */
+.forgot-link, 
+.signup-link {
+  color: #4fc3f7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgot-link:hover,
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4fc3f7;
+  box-shadow: 0 0 0 0.2rem rgba(79, 195, 247, 0.25);
+}
+
+/* Botão */
+.btn-primary {
+  background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3);
+}
