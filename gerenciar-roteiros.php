@@ -2,7 +2,7 @@
 session_start();
 require_once 'login/config.php'; // Incluir o arquivo de configuração do banco de dados
 
-if (!isset($_SESSION['logged']) || !$_SESSION['logged']) {
+if (!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     header('Location: loginpage.php');
     exit();
 }
@@ -159,7 +159,7 @@ try {
                     <h6 class="footerTitle">Sobre</h6>
                     <ul class="list-unstyled">
                         <li><a class="footer-link" href="index.php#about">Nossa Missão</a></li>
-                        <li><a class="footer-link" href="impacto.html">Impacto</a></li>
+                        <li><a class="footer-link" href="impacto.php">Impacto</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 mb-4">

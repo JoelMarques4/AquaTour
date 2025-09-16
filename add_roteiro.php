@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
+                        <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="#contact">Contato</a>

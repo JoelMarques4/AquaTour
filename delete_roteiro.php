@@ -4,7 +4,7 @@ session_start();
 require_once 'login/config.php';
 
 // Verifica se o usuário está logado
-if (!isset($_SESSION['logged']) || !$_SESSION['logged']) {
+if (!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_SESSION['admin']) || $_SESSION['admin'] != 1) {
     header('Location: loginpage.php');
     exit();
 }

@@ -54,27 +54,43 @@ try {
                         <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a> <!-- Alterado -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
+                        <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="#contact">Contato</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
-                    </li>
+                    <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
+                        </li>
+                    <?php endif; ?>
                     <?php
                         if (isset($_SESSION['logged']) && $_SESSION['logged']) {
-                            echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                                echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel (Admin)</a></li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                            }
                         }
                     ?>
                 </ul>
-                <form class="d-flex ms-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
-                    <button class="btn btn-primaryNav" type="submit">Buscar</button>
-                </form>
+                <?php if (isset($_SESSION['logged']) && $_SESSION['logged']): ?>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbar-linkUI" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Bem-vindo, <?php echo htmlspecialchars($_SESSION['name']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a class="dropdown-item" href="perfil.php">Meu Perfil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="login/logout.php">Sair</a></li>
+                        </ul>
+                      </li>
+                </ul>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
@@ -223,7 +239,7 @@ try {
             <div class="row text-center">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="impact-stat">
-                        <a href="impacto.html#tartarugas" class="text-decoration-none">
+                        <a href="impacto.php#tartarugas" class="text-decoration-none">
                             <div class="stat-icon">🐢</div>
                             <div class="stat-number">+350</div>
                             <div class="stat-label">Tartarugas Resgatadas</div>
@@ -232,7 +248,7 @@ try {
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="impact-stat">
-                        <a href="impacto.html#corais" class="text-decoration-none">
+                        <a href="impacto.php#corais" class="text-decoration-none">
                             <div class="stat-icon">🪸</div>
                             <div class="stat-number">+4 mil</div>
                             <div class="stat-label">Fragmentos de Corais Plantados</div>
@@ -241,7 +257,7 @@ try {
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="impact-stat">
-                        <a href="impacto.html#turistas" class="text-decoration-none">
+                        <a href="impacto.php#turistas" class="text-decoration-none">
                             <div class="stat-icon">👥</div>
                             <div class="stat-number">+50</div>
                             <div class="stat-label">Comunidades Locais Envolvidas</div>
@@ -250,7 +266,7 @@ try {
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="impact-stat">
-                        <a href="impacto.html#lixo" class="text-decoration-none">
+                        <a href="impacto.php#lixo" class="text-decoration-none">
                             <div class="stat-icon">♻️</div>
                             <div class="stat-number">+18</div>
                             <div class="stat-label">Toneladas de Lixo Removidos</div>

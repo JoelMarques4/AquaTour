@@ -50,28 +50,44 @@ try {
                         <a class="nav-link navbar-linkUI active" href="roteiros.php">Roteiros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
+                        <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="index.php#contact">Contato</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
-                    </li>
+                    <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
+                        </li>
+                    <?php endif; ?>
                     <?php
                     // Adiciona o link do Painel se o usuário estiver logado
                     if (isset($_SESSION['logged']) && $_SESSION['logged']) {
-                        echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                        if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                            echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel (Admin)</a></li>';
+                        } else {
+                            echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                        }
                     }
                     ?>
                 </ul>
-                <form class="d-flex ms-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar roteiros" aria-label="Buscar" />
-                    <button class="btn btn-primaryNav" type="submit">Buscar</button>
-                </form>
+                <?php if (isset($_SESSION['logged']) && $_SESSION['logged']): ?>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbar-linkUI" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Bem-vindo, <?php echo htmlspecialchars($_SESSION['name']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li><a class="dropdown-item" href="perfil.php">Meu Perfil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="login/logout.php">Sair</a></li>
+                        </ul>
+                      </li>
+                </ul>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
@@ -88,9 +104,9 @@ try {
                     <!-- Filtros rápidos -->
                     <div class="quick-filters">
                         <button class="filter-btn active" data-filter="all">Todos</button>
-                        <button class="filter-btn" data-filter="mergulho">Mergulho</button>
-                        <button class="filter-btn" data-filter="observacao">Observação</button>
-                        <button class="filter-btn" data-filter="noturno">Noturno</button>
+                        <button class="filter-btn" data-filter="certificado">Certificado</button>
+                        <button class="filter-btn" data-filter="popular">Popular</button>
+                        <button class="filter-btn" data-filter="sazonal">Sazonal</button>
                     </div>
                 </div>
             </div>
@@ -107,7 +123,8 @@ try {
                 </div>
             <?php else: ?>
                 <?php foreach ($roteiros as $roteiro): ?>
-                    <div class="roteiro-detalhado mb-5" id="roteiro-<?php echo htmlspecialchars($roteiro["id"]); ?>">
+                    <?php $badgeFilterClass = strtolower(trim($roteiro["badge"] ?? '')); ?>
+                    <div class="roteiro-detalhado mb-5 <?php echo $badgeFilterClass ? htmlspecialchars($badgeFilterClass) : ''; ?>" id="roteiro-<?php echo htmlspecialchars($roteiro["id"]); ?>" data-badge="<?php echo strtolower(trim($roteiro["badge"])) ?: 'no-badge'; ?>">
                         <div class="row align-items-center">
                             <div class="col-lg-6 <?php echo ($roteiro["id"] % 2 == 0) ? 'order-lg-2' : ''; ?>">
                                 <div class="roteiro-image-container">
@@ -186,9 +203,6 @@ try {
                                             <span class="price">A partir de R$ <?php echo number_format($roteiro["preco"], 2, ",", "."); ?></span>
                                             <span class="price-note">por pessoa</span>
                                         </div>
-                                        <button class="btn btn-primary btn-lg">
-                                            <i class="fas fa-calendar-alt"></i> Reservar Agora
-                                        </button>
                                     </div>
                                 </div>
                             </div>

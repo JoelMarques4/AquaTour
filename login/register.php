@@ -28,7 +28,7 @@ if ($stmt->fetch()) {
 
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
-$stmt = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
+$stmt = $pdo->prepare('INSERT INTO users (name, email, password, admin) VALUES (:name, :email, :password, 0)');
 $stmt->execute(['name' => $name, 'email' => $email, 'password' => $hash]);
 
 $_SESSION['success'] = 'Cadastro realizado. Faça login.';

@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h6 class="footerTitle">Sobre</h6>
                     <ul class="list-unstyled">
                         <li><a class="footer-link" href="index.php#about">Nossa Missão</a></li>
-                        <li><a class="footer-link" href="impacto.html">Impacto</a></li>
+                        <li><a class="footer-link" href="impacto.php">Impacto</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 mb-4">

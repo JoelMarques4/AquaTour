@@ -5,15 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roteiros = document.querySelectorAll('.roteiro-detalhado');
 
     if (filterButtons.length > 0 && roteiros.length > 0) {
-        // Adiciona as classes de categoria para os filtros funcionarem
-        const diveElement = document.getElementById('dive');
-        if (diveElement) diveElement.classList.add('mergulho');
-
-        const turtlesElement = document.getElementById('turtles');
-        if (turtlesElement) turtlesElement.classList.add('observacao', 'noturno');
-        
-        const whalesElement = document.getElementById('whales');
-        if (whalesElement) whalesElement.classList.add('observacao');
+        // Nada a mapear por ID agora; filtro por badge via data-attribute
 
         // Adiciona o evento de clique a cada botão de filtro
         filterButtons.forEach(btn => {
@@ -26,9 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const filter = this.getAttribute('data-filter');
                 
                 roteiros.forEach(roteiro => {
-                    // Mostra ou esconde o roteiro com base no filtro selecionado
-                    if (filter === 'all' || roteiro.classList.contains(filter)) {
-                        roteiro.style.display = 'block';
+                    // Mostra ou esconde o roteiro com base no filtro selecionado (usa classe e data-attr)
+                    if (filter === 'all') {
+                        roteiro.style.display = '';
+                        return;
+                    }
+
+                    const badgeAttr = (roteiro.getAttribute('data-badge') || '').toLowerCase();
+                    const hasClass = roteiro.classList.contains(filter);
+
+                    if (badgeAttr === filter || hasClass) {
+                        roteiro.style.display = '';
                     } else {
                         roteiro.style.display = 'none';
                     }

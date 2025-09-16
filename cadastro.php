@@ -38,7 +38,7 @@
                         <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a> <!-- Alterado -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
+                        <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="index.php#contact">Contato</a>
@@ -50,10 +50,7 @@
                         <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" />
-                    <button class="btn btn-primaryNav" type="submit">Buscar</button>
-                </form>
+                
             </div>
         </div>
     </nav>

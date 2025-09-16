@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = strtolower(trim($_POST['email'] ?? ''));
 $password = $_POST['password'] ?? '';
 
-$stmt = $pdo->prepare('SELECT id, name, password FROM users WHERE email = :email');
+$stmt = $pdo->prepare('SELECT id, name, password, admin FROM users WHERE email = :email');
 $stmt->execute(['email' => $email]);
 $user = $stmt->fetch();
 
@@ -19,6 +19,7 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['name'] = $user['name'];
     $_SESSION['email'] = $email;
+    $_SESSION['admin'] = $user['admin'];
     $_SESSION['logged'] = true;
     header('Location: ../painel.php');
     exit;

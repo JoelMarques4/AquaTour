@@ -62,21 +62,32 @@
             <p class="lead">Gerencie as informações do site AquaTour.</p>
         </div>
         <div class="row">
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1): ?>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="gerenciar-roteiros.php" class="dashboard-card">
+                        <div class="card-body">
+                            <div class="dashboard-icon"><i class="fas fa-map-signs"></i></div>
+                            <h5 class="card-title">Gerenciar Roteiros</h5>
+                            <p class="card-text">Adicione, edite ou remova roteiros turísticos.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="usuarios.php" class="dashboard-card">
+                        <div class="card-body">
+                            <div class="dashboard-icon"><i class="fas fa-users"></i></div>
+                            <h5 class="card-title">Gerenciar Usuários</h5>
+                            <p class="card-text">Visualize e exclua usuários do sistema.</p>
+                        </div>
+                    </a>
+                </div>
+            <?php endif; ?>
             <div class="col-lg-4 col-md-6 mb-4">
                 <a href="perfil.php" class="dashboard-card">
                     <div class="card-body">
                         <div class="dashboard-icon"><i class="fas fa-user-edit"></i></div>
                         <h5 class="card-title">Editar Perfil</h5>
                         <p class="card-text">Atualize seus dados pessoais e senha.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <a href="gerenciar-roteiros.php" class="dashboard-card">
-                    <div class="card-body">
-                        <div class="dashboard-icon"><i class="fas fa-map-signs"></i></div>
-                        <h5 class="card-title">Gerenciar Roteiros</h5>
-                        <p class="card-text">Adicione, edite ou remova roteiros turísticos.</p>
                     </div>
                 </a>
             </div>
@@ -111,7 +122,7 @@
                     <h6 class="footerTitle">Sobre</h6>
                     <ul class="list-unstyled">
                         <li><a class="footer-link" href="index.php#about">Nossa Missão</a></li>
-                        <li><a class="footer-link" href="impacto.html">Impacto</a></li>
+                        <li><a class="footer-link" href="impacto.php">Impacto</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 mb-4">
