@@ -70,7 +70,7 @@ try {
     <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Gerenciar Roteiros</h1>
-            <button class="btn btn-primary"><i class="fas fa-plus"></i> Adicionar Novo Roteiro</button>
+            <a href="add_roteiro.php" class="btn btn-primary"><i class="fas fa-plus"></i> Adicionar Novo Roteiro</a>
         </div>
 
         <?php if (isset($_GET['message']) && isset($_GET['type'])): ?>
