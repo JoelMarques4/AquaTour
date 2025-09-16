@@ -108,7 +108,25 @@ try {
                                     <img src="<?php echo htmlspecialchars($roteiro["imagem"]); ?>" alt="<?php echo htmlspecialchars($roteiro["titulo"]); ?>" class="img-fluid rounded-4">
                                     <?php if (!empty($roteiro["badge"])): ?>
                                         <div class="roteiro-badge <?php echo htmlspecialchars($roteiro["badge"]); ?>">
-                                            <?php echo htmlspecialchars($roteiro["badge"]); ?>
+                                            <?php 
+                                            // Define a classe com base no tipo de badge
+                                            $badgeClass = '';
+                                            switch (htmlspecialchars($roteiro["badge"])) {
+                                                case 'Certificado':
+                                                    $badgeClass = 'badge-verde'; // Classe para badge verde
+                                                    break;
+                                                case 'Popular':
+                                                    $badgeClass = 'badge-amarelo'; // Classe para badge amarelo
+                                                    break;
+                                                case 'Sazonal':
+                                                    $badgeClass = 'badge-roxo'; // Classe para badge roxo
+                                                    break;
+                                                default:
+                                                    $badgeClass = 'badge-default'; // Classe padrão, se necessário
+                                                    break;
+                                            }
+                                            ?>
+                                            <span class="<?php echo $badgeClass; ?>"><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
                                         </div>
                                     <?php endif; ?>
                                 </div>

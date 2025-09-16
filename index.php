@@ -141,77 +141,73 @@
         </div>
     </section>
 
-    <!-- Tours Section -->
-    <section id="tours" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Roteiros Sustentáveis</h2>
-                <p class="lead">Descubra experiências únicas que respeitam a natureza</p>
-            </div>
+    <?php
+require_once 'login/config.php'; // Incluir o arquivo de configuração do banco de dados
 
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <a href="roteiros.html#dive" class="text-decoration-none">
-                        <div class="tour-card" id="dive">
-                            <div class="tour-image">
-                                <img src="corais.jpg" alt="Mergulho em Recifes">
-                                <div class="tour-badge">Certificado</div>
-                            </div>
-                            <div class="tour-content">
-                                <h4>Mergulho em Recifes</h4>
-                                <p>Explore a biodiversidade marinha com guias especializados em conservação.</p>
-                                <div class="tour-features">
-                                    <span><i class="fas fa-leaf"></i> Eco-friendly</span>
-                                    <span><i class="fas fa-users"></i> Grupos pequenos</span>
-                                </div>
-                                <div class="tour-price">A partir de R$ 180</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+$roteiros = [];
+try {
+    $stmt = $pdo->query('SELECT * FROM roteiros ORDER BY created_at DESC LIMIT 3'); // Limitar a 3 roteiros para a seção inicial
+    $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo '<div class="alert alert-danger">Erro ao carregar roteiros: ' . $e->getMessage() . '</div>';
+}
+?>
 
-                <div class="col-lg-4 mb-4">
-                    <a href="roteiros.html#turtles" class="text-decoration-none">
-                        <div class="tour-card" id="turtles">
-                            <div class="tour-image">
-                                <img src="tartarugas.jpg" alt="Observação de Tartarugas">
-                                <div class="tour-badge">Popular</div>
-                            </div>
-                            <div class="tour-content">
-                                <h4>Observação de Tartarugas</h4>
-                                <p>Acompanhe o ciclo de vida das tartarugas marinhas em seu habitat natural.</p>
-                                <div class="tour-features">
-                                    <span><i class="fas fa-moon"></i> Noturno</span>
-                                    <span><i class="fas fa-camera"></i> Fotografia</span>
-                                </div>
-                                <div class="tour-price">A partir de R$ 120</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 mb-4">
-                    <a href="roteiros.html#whales" class="text-decoration-none">
-                        <div class="tour-card" id="whales">
-                            <div class="tour-image">
-                                <img src="baleia.jpg" alt="Observação de Baleias">
-                                <div class="tour-badge">Sazonal</div>
-                            </div>
-                            <div class="tour-content">
-                                <h4>Observação de Orcas</h4>
-                                <p>Encontro respeitoso com os gigantes dos oceanos durante a temporada de migração.</p>
-                                <div class="tour-features">
-                                    <span><i class="fas fa-ship"></i> Embarcação</span>
-                                    <span><i class="fas fa-binoculars"></i> Avistamento</span>
-                                </div>
-                                <div class="tour-price">A partir de R$ 250</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+<!-- Tours Section -->
+<section id="tours" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Roteiros Sustentáveis</h2>
+            <p class="lead">Descubra experiências únicas que respeitam a natureza</p>
         </div>
-    </section>
+
+        <div class="row">
+            <?php if (empty($roteiros)): ?>
+                <div class="alert alert-info text-center" role="alert">
+                    Nenhum roteiro cadastrado ainda.
+                </div>
+            <?php else: ?>
+                <?php foreach ($roteiros as $roteiro): ?>
+                    <div class="col-lg-4 mb-4">
+                        <a href="roteiros.php#roteiro-<?php echo htmlspecialchars($roteiro["id"]); ?>" class="text-decoration-none">
+                            <div class="tour-card" id="roteiro-<?php echo htmlspecialchars($roteiro["id"]); ?>">
+                                <div class="tour-image">
+                                    <img src="<?php echo htmlspecialchars($roteiro["imagem"]); ?>" alt="<?php echo htmlspecialchars($roteiro["titulo"]); ?>">
+                                    <div class="tour-badge">
+                                        <?php 
+                                        // Define a classe com base no tipo de badge
+                                        $badgeClass = '';
+                                        switch (htmlspecialchars($roteiro["badge"])) {
+                                            case 'Certificado':
+                                                $badgeClass = 'badge-verde'; // Classe para badge verde
+                                                break;
+                                            case 'Popular':
+                                                $badgeClass = 'badge-amarelo'; // Classe para badge amarelo
+                                                break;
+                                            case 'Sazonal':
+                                                $badgeClass = 'badge-roxo'; // Classe para badge roxo
+                                                break;
+                                            default:
+                                                $badgeClass = 'badge-default'; // Classe padrão, se necessário
+                                                break;
+                                        }
+                                        ?>
+                                        <span class="<?php echo $badgeClass; ?>"><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
+                                    </div>
+                                </div>
+                                <div class="tour-content">
+                                    <h4><?php echo htmlspecialchars($roteiro["titulo"]); ?></h4>
+                                    <p><?php echo nl2br(htmlspecialchars($roteiro["descricao"])); ?></p>
+                                    <div class="tour-price">A partir de R$ <?php echo number_format($roteiro["preco"], 2, ",", "."); ?></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
 
     <!-- Impact Section -->
     <section id="impact" class="py-5">

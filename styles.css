@@ -260,15 +260,12 @@ footer {
 }
 
 .tour-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #4fc3f7;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    color: white;
+    padding: 0;
 }
 
 .tour-content {
@@ -335,4 +332,37 @@ footer {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   opacity: 0.9;
+}
+
+.tour-content p {
+    font-size: 0.9rem;
+    color: black;
+}
+
+.badge-verde {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 8px 10px;
+    border-radius: 12px;
+}
+
+.badge-amarelo {
+    background-color: #ffc107; /* Amarelo */
+    color: white;
+    padding: 8px 10px;
+    border-radius: 12px;
+}
+
+.badge-roxo {
+    background-color: #6f42c1; /* Roxo */
+    color: white;
+    padding: 8px 10px;
+    border-radius: 12px;
+}
+
+.badge-default {
+    background-color: #6c757d; /* Cinza padrão */
+    color: white;
+    padding: 8px 10px;
+    border-radius: 12px;
 }

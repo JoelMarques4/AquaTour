@@ -276,7 +276,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar Roteiro</button>
-            <a href="roteiros.php" class="btn btn-secondary">Voltar</a> <!-- Alterado -->
+            <a href="roteiros.php" class="btn btn-secondary ms-3">Voltar</a> <!-- Adicionada a classe ms-3 -->
         </form>
     </div>
 
