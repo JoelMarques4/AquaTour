@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link navbar-linkUI" href="#about">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="roteiros.html">Roteiros</a>
+                        <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
@@ -276,7 +276,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar Roteiro</button>
-            <a href="gerenciar-roteiros.php" class="btn btn-secondary">Voltar</a>
+            <a href="roteiros.php" class="btn btn-secondary">Voltar</a> <!-- Alterado -->
         </form>
     </div>
 

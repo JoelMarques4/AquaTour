@@ -33,7 +33,7 @@
                         <a class="nav-link navbar-linkUI" href="index.php#about">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="roteiros.html">Roteiros</a>
+                        <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a> <!-- Alterado -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>

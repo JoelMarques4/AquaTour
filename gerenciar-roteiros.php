@@ -50,6 +50,9 @@ try {
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="painel.php">Painel</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-linkUI" href="roteiros.php">Roteiros</a> <!-- Alterado -->
+                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">

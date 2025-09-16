@@ -47,7 +47,7 @@ try {
                         <a class="nav-link navbar-linkUI" href="index.php#about">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI active" href="roteiros.html">Roteiros</a>
+                        <a class="nav-link navbar-linkUI active" href="roteiros.php">Roteiros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="impacto.html">Impacto</a>
