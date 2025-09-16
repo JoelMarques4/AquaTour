@@ -61,6 +61,12 @@ try {
                     <li class="nav-item">
                         <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
                     </li>
+                    <?php
+                    // Adiciona o link do Painel se o usuário estiver logado
+                    if (isset($_SESSION['logged']) && $_SESSION['logged']) {
+                        echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                    }
+                    ?>
                 </ul>
                 <form class="d-flex ms-auto" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar roteiros" aria-label="Buscar" />

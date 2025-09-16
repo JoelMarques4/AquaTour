@@ -7,9 +7,17 @@ if (!isset($_SESSION['logged']) || !$_SESSION['logged']) {
     exit();
 }
 
+// Busca funcional por título
+$busca = trim($_GET['busca'] ?? '');
 $roteiros = [];
 try {
-    $stmt = $pdo->query('SELECT * FROM roteiros ORDER BY created_at DESC');
+    if ($busca !== '') {
+        // Busca por título usando LIKE
+        $stmt = $pdo->prepare('SELECT * FROM roteiros WHERE titulo LIKE :busca ORDER BY created_at DESC');
+        $stmt->execute([':busca' => "%$busca%"]);
+    } else {
+        $stmt = $pdo->query('SELECT * FROM roteiros ORDER BY created_at DESC');
+    }
     $roteiros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     // Em um ambiente de produção, você registraria o erro em vez de exibi-lo diretamente
@@ -82,6 +90,15 @@ try {
             </div>
         <?php endif; ?>
 
+        <form class="d-flex mb-3" method="get" action="gerenciar-roteiros.php">
+            <!-- Campo de busca funcional -->
+            <input class="form-control me-2" type="search" name="busca" placeholder="Buscar por título" value="<?php echo htmlspecialchars($busca); ?>" aria-label="Buscar">
+            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            <?php if ($busca !== ''): ?>
+                <a href="gerenciar-roteiros.php" class="btn btn-link ms-2">Limpar</a>
+            <?php endif; ?>
+        </form>
+
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="table-responsive">
@@ -104,14 +121,14 @@ try {
                                         <td><?php echo htmlspecialchars($roteiro['titulo']); ?></td>
                                         <td>R$ <?php echo number_format($roteiro['preco'], 2, ',', '.'); ?></td>
                                         <td class="text-end">
-                                            <button class="btn btn-sm btn-outline-primary table-action-btn" title="Editar" 
-                                                    data-id="<?php echo $roteiro['id']; ?>">
+                                            <!-- Botão de editar: agora é um link para edit_roteiro.php -->
+                                            <a href="edit_roteiro.php?id=<?php echo $roteiro['id']; ?>" class="btn btn-sm btn-outline-primary table-action-btn" title="Editar">
                                                 <i class="fas fa-pencil-alt"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir"
-                                                    data-id="<?php echo $roteiro['id']; ?>">
+                                            </a>
+                                            <!-- Botão de excluir: agora é um link para delete_roteiro.php -->
+                                            <a href="delete_roteiro.php?id=<?php echo $roteiro['id']; ?>" class="btn btn-sm btn-outline-danger table-action-btn" title="Excluir" onclick="return confirm('Tem certeza que deseja excluir este roteiro?');">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
