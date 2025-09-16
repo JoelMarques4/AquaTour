@@ -46,7 +46,7 @@ session_start();
                         <a class="nav-link navbar-linkUI active" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="index.php#contact">Contato</a>
+                        <a class="nav-link navbar-linkUI" href="index.php#ods14">ODS 14</a>
                     </li>
                     <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
                         <li class="nav-item">
@@ -267,7 +267,7 @@ session_start();
                 <div class="col-lg-2 mb-4">
                     <h6 class="footerTitle">Suporte</h6>
                     <ul class="list-unstyled">
-                        <li><a class="footer-link" href="index.php#contact">Contato</a></li>
+                        <li><a class="footer-link" href="index.php#ods14">ODS 14</a></li>
                         <li><a class="footer-link" href="index.php#report">Denúncias</a></li>
                         <li><a class="footer-link" href="index.php#faq">FAQ</a></li>
                     </ul>

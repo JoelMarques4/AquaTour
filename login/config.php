@@ -1,8 +1,8 @@
 <?php
 
-$host = 'localhost';
-$username = 'root';
-$password = '';
+$host = 'sql112.infinityfree.com';
+$username = 'if0_39315634';
+$password = 'xR8HQYgpR4Qu6f';
 $dbname = 'bd_aquatour';
 $charset = 'utf8mb4';
 

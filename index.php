@@ -20,9 +20,14 @@ try {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AquaTour</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script defer src="script_roteiros.js"></script>
+    <script defer src="script.js"></script>        
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link href="roteiros.css" rel="stylesheet">
+    
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -57,7 +62,7 @@ try {
                         <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="#contact">Contato</a>
+                        <a class="nav-link navbar-linkUI" href="#ods14">ODS 14</a>
                     </li>
                     <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
                         <li class="nav-item">
@@ -192,8 +197,7 @@ try {
                                 <div class="tour-card" id="roteiro-<?php echo htmlspecialchars($roteiro["id"]); ?>">
                                     <div class="tour-image">
                                         <img src="<?php echo htmlspecialchars($roteiro["imagem"]); ?>" alt="<?php echo htmlspecialchars($roteiro["titulo"]); ?>">
-                                        <div class="tour-badge">
-                                            <?php 
+                                        <?php 
                                             // Define a classe com base no tipo de badge
                                             $badgeClass = '';
                                             switch (htmlspecialchars($roteiro["badge"])) {
@@ -211,7 +215,8 @@ try {
                                                     break;
                                             }
                                             ?>
-                                            <span class="<?php echo $badgeClass; ?>"><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
+                                        <div class="tour-badge <?php echo $badgeClass; ?>">
+                                            <span><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
                                         </div>
                                     </div>
                                     <div class="tour-content">
@@ -277,34 +282,87 @@ try {
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center">Contato</h2>
-            <p class="lead text-center">Entre em contato conosco para dúvidas, sugestões ou parcerias.</p>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <form>
-                        <div class="mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mensagem" class="form-label">Mensagem</label>
-                            <textarea class="form-control" id="mensagem" rows="4" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                    </form>
+    <!-- ODS 14 Conscientização Section -->
+<section id="ods14" class="py-5 hero-section bg-primary text-white">
+ <div class="ocean-background"></div>
+<div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold hero-title">ODS 14: Vida na Água</h2>
+      <p class="lead">
+        A ODS 14 faz parte dos Objetivos de Desenvolvimento Sustentável da ONU e visa
+        conservar e usar de forma sustentável os oceanos, mares e recursos marinhos
+        para o desenvolvimento sustentável.
+      </p>
+    </div>
+
+    <div class="row align-items-center">
+      <!-- Imagem -->
+      <div class="col-lg-5 text-center mb-4 mb-lg-0">
+        <img src="ods-14.png" alt="ODS 14 Vida na Água"
+          class="img-fluid" style="max-width: 280px;">
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="col-lg-7">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="card bg-light text-dark h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body d-flex align-items-start">
+                <i class="fas fa-leaf text-success fs-3 me-3"></i>
+                <div>
+                  <h6 class="fw-bold mb-1">Proteção dos ecossistemas</h6>
+                  <p class="mb-0 small">Garantir a saúde dos oceanos e mares.</p>
                 </div>
+              </div>
             </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="card bg-light text-dark h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body d-flex align-items-start">
+                <i class="fas fa-recycle text-warning fs-3 me-3"></i>
+                <div>
+                  <h6 class="fw-bold mb-1">Combate à poluição</h6>
+                  <p class="mb-0 small">Redução do lixo marinho e resíduos tóxicos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card bg-light text-dark h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body d-flex align-items-start">
+                <i class="fas fa-fish text-info fs-3 me-3"></i>
+                <div>
+                  <h6 class="fw-bold mb-1">Uso sustentável</h6>
+                  <p class="mb-0 small">Pesca responsável e apoio às comunidades costeiras.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card bg-light text-dark h-100 shadow-sm border-0 rounded-4">
+              <div class="card-body d-flex align-items-start">
+                <i class="fas fa-book text-success fs-3 me-3"></i>
+                <div>
+                  <h6 class="fw-bold mb-1">Educação e conscientização</h6>
+                  <p class="mb-0 small">Promover o conhecimento sobre a vida aquática.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+
+        <p class="mt-4 fs-5">
+          Junte-se ao <strong>AquaTour</strong> e contribua para a preservação dos oceanos,
+          promovendo o turismo sustentável e apoiando a ODS 14!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Denúncias Section -->
     <section id="report" class="py-5 bg-light">
@@ -404,7 +462,7 @@ try {
                 <div class="col-lg-2 mb-4">
                     <h6 class="footerTitle">Suporte</h6>
                     <ul class="list-unstyled">
-                        <li><a class="footer-link" href="#contact">Contato</a></li>
+                        <li><a class="footer-link" href="#ods14">ODS 14</a></li>
                         <li><a class="footer-link" href="#report">Denúncias</a></li>
                         <li><a class="footer-link" href="#faq">FAQ</a></li>
                     </ul>

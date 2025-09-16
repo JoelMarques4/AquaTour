@@ -53,7 +53,7 @@ try {
                         <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="index.php#contact">Contato</a>
+                        <a class="nav-link navbar-linkUI" href="index.php#ods14">ODS 14</a>
                     </li>
                     <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
                         <li class="nav-item">
@@ -130,8 +130,7 @@ try {
                                 <div class="roteiro-image-container">
                                     <img src="<?php echo htmlspecialchars($roteiro["imagem"]); ?>" alt="<?php echo htmlspecialchars($roteiro["titulo"]); ?>" class="img-fluid rounded-4">
                                     <?php if (!empty($roteiro["badge"])): ?>
-                                        <div class="roteiro-badge <?php echo htmlspecialchars($roteiro["badge"]); ?>">
-                                            <?php 
+                                        <?php 
                                             // Define a classe com base no tipo de badge
                                             $badgeClass = '';
                                             switch (htmlspecialchars($roteiro["badge"])) {
@@ -149,7 +148,8 @@ try {
                                                     break;
                                             }
                                             ?>
-                                            <span class="<?php echo $badgeClass; ?>"><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
+                                        <div class="tour-badge <?php echo $badgeClass; ?>">
+                                            <span><?php echo htmlspecialchars($roteiro["badge"]); ?></span>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -282,7 +282,7 @@ try {
                 <div class="col-lg-2 mb-4">
                     <h6 class="footerTitle">Suporte</h6>
                     <ul class="list-unstyled">
-                        <li><a class="footer-link" href="index.php#contact">Contato</a></li>
+                        <li><a class="footer-link" href="index.php#ods14">ODS 14</a></li>
                         <li><a class="footer-link" href="index.php#report">Denúncias</a></li>
                         <li><a class="footer-link" href="index.php#faq">FAQ</a></li>
                     </ul>

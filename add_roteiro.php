@@ -152,17 +152,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link navbar-linkUI" href="impacto.php">Impacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="#contact">Contato</a>
+                        <a class="nav-link navbar-linkUI" href="#contact">ODS</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
-                    </li>
+                    <?php if (!isset($_SESSION['logged']) || !$_SESSION['logged']): ?>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="loginpage.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-linkUI" href="cadastro.php">Cadastro</a>
+                        </li>
+                    <?php endif; ?>
                     <?php
                         if (isset($_SESSION['logged']) && $_SESSION['logged']) {
-                            echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+                                echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel (Admin)</a></li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link navbar-linkUI" href="painel.php">Painel</a></li>';
+                            }
                         }
                     ?>
                 </ul>

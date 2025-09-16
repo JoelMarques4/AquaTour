@@ -340,28 +340,28 @@ footer {
 }
 
 .badge-verde {
-    background-color: #28a745; /* Verde */
+    background: #28a745; /* Verde */
     color: white;
     padding: 8px 10px;
     border-radius: 12px;
 }
 
 .badge-amarelo {
-    background-color: #ffc107; /* Amarelo */
+    background: #ffc107; /* Amarelo */
     color: white;
     padding: 8px 10px;
     border-radius: 12px;
 }
 
 .badge-roxo {
-    background-color: #6f42c1; /* Roxo */
+    background: #6f42c1; /* Roxo */
     color: white;
     padding: 8px 10px;
     border-radius: 12px;
 }
 
 .badge-default {
-    background-color: #6c757d; /* Cinza padrão */
+    background: #6c757d; /* Cinza padrão */
     color: white;
     padding: 8px 10px;
     border-radius: 12px;
