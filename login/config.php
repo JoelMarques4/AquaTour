@@ -1,9 +1,13 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $host = 'sql112.infinityfree.com';
 $username = 'if0_39315634';
 $password = 'xR8HQYgpR4Qu6f';
-$dbname = 'bd_aquatour';
+$dbname = 'if0_39315634_bd_aquatour';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
